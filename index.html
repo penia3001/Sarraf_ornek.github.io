@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İntikamın ve Gücün Yolu</title>
+  <style>
+/* Genel Ayarlar */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: #0f0f0f; /* Daha şık bir karanlık arka plan */
+  color: #fff;
+  height: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Hero Bölümü */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: radial-gradient(circle, #1b1b1b, #0f0f0f);
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.8);
+  will-change: transform, opacity;
+  animation: heroImageAnimation 15s infinite alternate linear;
+}
+
+@keyframes heroImageAnimation {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  backdrop-filter: blur(5px);
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+  animation: fadeIn 1.2s ease-out;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  color: #ddd;
+  animation: fadeIn 1.5s ease-out;
+}
+
+.cta-button {
+  margin-top: 2rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 8px 15px rgba(255, 65, 108, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 25px rgba(255, 75, 43, 0.6);
+}
+
+/* Animasyonlar */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Varsayılan Stil */
+.glass-section {
+  margin: 20px auto;
+  padding: 3rem;
+  max-width: 960px;
+  background: rgba(0, 0, 0, 1); /* Varsayılan arka plan */
+  backdrop-filter: blur(25px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(1, 0, 0, 1);
+  text-align: center;
+  color: #black; /* Varsayılan metin rengi */
+  transition: background 0.4s ease, color 0.4s ease; /* Geçiş efekti */
+}
+
+/* Hover Durumu (Sadece Aktif Olmayanlar için) */
+.glass-section:not(.active):hover {
+  background: rgba(255, 255, 255, 1); /* Arka plan beyaz */
+  color: #000; /* Metin siyah */
+}
+
+/* Tıklama Durumu */
+.glass-section.active {
+  background: rgba(255, 255, 255, 1); /* Arka plan beyaz */
+  color: #000; /* Metin siyah */
+}
+
+/* Hover Etkisi Paragraflar */
+.glass-section:not(.active):hover p {
+  color: #000; /* Paragraf siyah */
+}
+
+/* Active Durumu */
+.glass-section.active {
+  background: rgba(255, 255, 255, 1); /* Arka plan beyaz */
+  color: black; /* Metin siyah */
+}
+
+/* Active Durumunda Hover */
+.glass-section.active:hover {
+  background: rgba(255, 255, 255, 1); /* Beyaz kalır */
+  color: black; /* Siyah kalır */
+}
+
+/* Parallax Efekt */
+.parallax {
+  height: 100vh;
+  background: url('dark-forest.jpg') no-repeat center center/cover;
+  background-attachment: fixed;
+  position: relative;
+  will-change: transform, opacity;
+  animation: parallaxEffect 30s infinite alternate ease-in-out;
+}
+
+@keyframes parallaxEffect {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+.parallax::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: #0e0e0e;
+  color: #F5F4EB;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  border-top: 1px solid #333;
+  position: relative;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+footer .footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  line-height: 1.8;
+  color: #dcdcdc;
+}
+
+footer p {
+  margin: 0.5rem 0;
+}
+
+footer span {
+  color: #ff416c;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 0 1px 3px rgba(255, 65, 108, 0.7);
+}
+
+footer:hover {
+  background: #151515;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Animasyonlar */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-30px); /* Daha az hareket, daha yumuşak efekt */
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes glowEffect {
+  0% {
+    text-shadow: 0 0 3px #000, 0 0 8px #333, 0 0 12px #555, 0 0 15px #777, 0 0 20px #aaa;
+    color: #121212; /* Sofistike koyu gri */
+  }
+  50% {
+    text-shadow: 0 0 6px #444, 0 0 12px #666, 0 0 18px #999, 0 0 24px #ccc, 0 0 30px #eee;
+    color: #1a1a1a; /* Biraz daha açık koyu ton */
+  }
+  100% {
+    text-shadow: 0 0 3px #333, 0 0 9px #555, 0 0 15px #777, 0 0 21px #aaa, 0 0 27px #ccc;
+    color: #101010; /* Daha koyu sofistike ton */
+  }
+}
+
+.hero h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  color: #1a1a1a; /* Varsayılan koyu ton */
+  letter-spacing: 0.1em;
+  animation: glowEffect 4s infinite alternate ease-in-out; /* Daha kısa döngü */
+  background: linear-gradient(90deg, #111, #333, #555, #444, #eee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: brightness(1.1); /* Parlaklığı dengeler */
+}
+/* Gümüş tabloyu oluşturmak için */
+.silver-box {
+    background: linear-gradient(145deg, #d1d1d1, #b0b0b0); /* Gümüş renginde gradient */
+    border: 2px solid #8e8e8e; /* Gümüş renginde kenarlık */
+    border-radius: 10px;
+    padding: 20px;
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+    font-style: italic;
+}
+
+.silver-box p {
+    color: #2c3e50;  /* Metnin rengi */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Hover efekti */
+.silver-box:hover {
+    background: linear-gradient(145deg, #b0b0b0, #d1d1d1);
+    cursor: pointer;
+}
+
+/* Mobil Uyumluluk */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem; /* Daha küçük, ancak şık görünüm */
+    letter-spacing: 2px;
+    animation: glowEffect 4s infinite alternate; /* Mobil için optimize edilmiş glow efekti */
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #ddd; /* Daha yumuşak bir ton */
+  }
+
+  .cta-button {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: 30px; /* Daha yuvarlak bir görünüm */
+    box-shadow: 0 5px 15px rgba(255, 75, 43, 0.5); /* Daha hafif gölge */
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-6px) scale(1.1); /* Daha yumuşak hover efekti */
+    box-shadow: 0 10px 20px rgba(255, 75, 43, 0.6);
+  }
+
+  .glass-section {
+    padding: 1rem; /* Mobil ekranlarda daha az boşluk */
+    margin: 10px;
+    background: rgba(16, 14, 9, 0.9); /* Daha koyu ve sofistike görünüm */
+    backdrop-filter: blur(12px) saturate(150%);
+  }
+
+  .glass-section h2 {
+    font-size: 1.8rem;
+    letter-spacing: 1.5px;
+    color: #ff7b54;
+  }
+
+  .glass-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #f0f0f0; /* Daha yumuşak kontrast */
+  }
+}
+  </style>
+</head>
+<body>
+  <!-- Hero Bölümü - Görsel Arka Plan -->
+  <div class="hero">
+    <img src="https://media.istockphoto.com/id/908940162/tr/foto%C4%9Fraf/%C5%9Fehir-geceleri-siste.jpg?s=612x612&w=0&k=20&c=UcUdTOpZ7omkcz7pRPX8hex3EyzDZMzKZ0fGG2VFoHs=" alt="Mystery Road" class="hero-image">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h1 class="hero-title">İNSAN SARRAFI</h1>
+        <p class="hero-subtitle">Bir gecede başlayan dönüşüm, işte ben o geceden sonra asla eski ben olmadım...</p>
+        <a href="#content" class="cta-button">Hikayeyi Keşfet</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- İçerik Alanı -->
+  <main id="content">
+    <section class="glass-section" onclick="toggleSection(event)">
+      <h2>Gölgedeki Adamın Hikayesi</h2>
+      <p>Karanlık sokağın sessizliğini, attığım adımların yankılarıyla bozuyordum. Sanki birisi beni takip ediyordu. Adımlarımı dikkatli ve sessizce atmaya özen gösteriyordum. Önüme bakarak yürümekten çok, arkamı kolluyordum. Sessiz geceye rağmen tenimi okşayan rüzgar, adeta tüylerimi ürpertiyor, havanın soğukluğu, sıcak tenimin her bölgesinde hızla dolaşıyordu. Birden durdum ve arkamı döndüm. Beni adım adım takip eden bilinmez, karşımda, intikam arzusuyla bana doğru bakıyordu. Yavaşça kulağıma fısıldadığı sözleri hafızama kazıdım. İşte ben o gece tüm benliğimle bana sonsuz vaatlerde bulunan kendi bilinmezimle tanıştım ve gelecek hayatım için onunla anlaştım. İşte ben o geceden sonra asla eski ben olmadım. Arzuladım, istedim ve aldım. Evet, aldım fakat hevesim geçene kadar, isteğim tükenene kadar, yorulmayan bedenim bana dur diyene kadar asla durmadım. Sana bu yola ulaşana kadar yaşadıklarımın serüvenini anlatmak istiyorum. Her insan kaybettikçe öğrenir. Kaybettiğini fark ettiğinde, içindeki boşluğu ancak intikamla doldurabilirsin. Ben de öyle yaptım. Geçmişte yaşadığım tüm kötü tecrübelerle kırdım zincirlerimi, sığmadım hiçbir yere ve hayatın en önemli aşamalarında güçlü bir adam olarak yerimi aldım. Çocukluğumdan itibaren, kaybetmenin ne demek olduğunu öğrenmiş biri olarak, artık kayıplarımın karşısında ne yapmam gerektiğini biliyordum. Tecrübe, kaybedilenlerin acısının toplamıdır. Bu yola ilk büyük adımı, geçmişte kaybettiklerimi, hislerimi ve haysiyetimi anlamaya başladığımda attım. <br><br>Kaybın ve intikamın arasında bir fark vardır; kaybederken sessizce kanarsınız, ama intikam aldığınızda her şeyin karşılığını alırsınız. Günah yalnızca kötü bir davranış değilmiş. Kaybedilenlerin ve alınan intikamın verdiği tat, bana hatırlatır ki hayat, zaferlerden değil, kayıplardan ders çıkarmakla değer kazanır. Bu yola çıkarken her şeyimi kaybettim. Ve kazandıklarım, kaybettiklerimin intikamıydı. Üniversite döneminde toy bir adamdım. Fakat kayıplar, en sert öğretmenimdi. Bir süre sonra, kaybedilen her şeyin bir şekilde geri alınabileceğini fark ettim. Zorbalıkla değil, kaybettiklerimle yüzleşmek bir mücadele haline geldi. Rotasını bilen bir gemi kaptanı, dümeni doğru yöne çevirmediği sürece rotayı bilmesi neye yarar ki? Bu konuda fırsatları değerlendirmek gerekir. Kişisel gelişim, kaybettiklerimizin yerine koyacağımız her yeni adımda gizlidir. Olgunlaşmamış bir meyve gibi hissettiğim zamanlar oldu, ama her kaybın ardından yeni bir başlangıç yapmak gerektiğini öğrendim. Bu hayat serüvenini seninle paylaşmak istiyorum. Satırları okurken, sen de fark edeceksin ki, her kayıp, sonrasında alacağın intikam için hazırlıktır. <br><br>Lise zamanında pek flörtöz biri değildim. Sosyal bir yaşam tarzım vardı ama flörtöz değildim. Nil Kolejinde ses yarışması kulübündeydim. Hatta o sene il birincisi seçilmiştim, tüm gözler üstümdeydi. Genelde kızlarla iletişimim oldukça iyiydi. O zamanlar tabii aşkın ve sevginin varlığına inanıyordum. Tabii ben de kalbine yenilen her varlık gibi, aşk denilen yalan hikâyenin bir figürü hâline gelmiştim. <br><br> Okulun kantininde gördüğüm o kıza âdeta takılıp kaldım. Çamura saplanan araba gibi… Çıkmak için çırpınırsın da her çıkmak istediğinde patinaj çekersin ya, işte öyle bir şey. Birden çırpınmayı kestim ve çamura tamamen batmayı istedim. Belki benim kaderimde de çamura saplanan bir arabanın hikâyesi saklıydı. Bir araba mutlaka, başka bir arabanın desteğiyle de olsa çamurdan çıkmak isterse bir yolunu bulur, çıkar. Bu mesele öyle değil işte. Kim çamura batıp kalan bir araba olmak ister ki, isteyenin hikâyesini dinlemek için meraklanmaz? <br><br> Neyse, bir akşam muhabbetle başlayan bu serüvene cesaretli bir adam profiliyle giriştim; kendimden emin, bir o kadar da cesaret timsali bir hâlde, nereye gideceğini bilmediğim, üç yıllık bir hikâyeye başladım. Bazen ağladık, bazen güldük. O dönemlerde sevgi, ciğerlerimde dolaşan ve bağımlısı olduğum bir tür maddeye benzerdi. Her neyse, zaman geldi çattı. Okulun ardından askerlik gibi zorlu bir görev vardı. Asla tereddüt etmedim. Onun sevgisinden aldığım cesaretle, özlem ve hasretin önemsiz olduğunu düşünüyordum. Bana göre o beklerdi. Ama sonradan anladım ki sadece bana göreymiş. <br><br> Bir önceki satırda, hayal kırıklıklarıyla tecrübe edindiğim cümlede de belirttiğim gibi hiç de öyle olmadı. Askere gittikten kısa bir süre sonra, aldatıldığımı öğrendim. İlk anda kabullenemedim, daha sonra istemeye isteyemeye olsa da gerçekleri reddedemedim. Günlerce ruh gibi gezdim. Her şeyden kendimi soyutlamış bir hâlde dolanıyordum. Kafamın içi âdeta cam kırıklarıyla doluydu. Ne yana dönersem döneyim bir yerden batıyor, canımı yakıyordu. Sahi bende eksik olan ne vardı? Ona nasıl yetmemiştim ki benden başkasını tercih etmişti? Kulağımdaki çınlama, gözlerimdeki karartı… Dünya resmen kocaman bir buz dağı gibi üzerime düşmüştü. Kendimi duygularıyla hareket edemeyen bir felç hastası, âciz bir adam gibi görmüştüm. <br><br> O an aklımda, hayatımın geri kalanının asla değişmez ilk üç kanun maddesini belirlemiştim: kimseye güvenme, aşk denilen yalana inanma ve asla birine bağlanma. Hayatımın geri kalanı, değişmeyen bu üç kanun maddesiyle, o geceden itibaren sonsuza kadar sürecek bir sözleşme ile ipotek altına alınmıştı. Bir an öldüğüm günü ve mezardaki bedenimi düşündüm. Kendi kendime dedim ki, ben yaşadığım bu yıkımın enkazını mezarımda bile unutmam. İnsanların hayatlarında unutamadıkları bazı acı anlar vardır; hatırlamak istemezsin ama zihninden de atamazsın. <br><br> Bir gün, sevdiğim bu kıza sürpriz yapmak için terhis bölüğümden izin istedim. Bölük komutanım izin vermeyince hastanenin sistemine sızıp kendime özel hava değişimi çıkardım. Onunla her gece gittiğimiz kafeye yine yine aynı saatte gidip her zaman oturduğu yere oturacağından adım gibi emindim. Yıllarımız geçiyordu sonuçta, onu yavaş yavaş tanımaya başlıyordum. Hızlı, koşar adımlarla o kafeye gittim. Elimde de giderken yol kenarındaki küçük bir çingene kızından aldığım papatyalar vardı. Onu yakından görmeden önce, bensiz yaptıklarını görmek için uzaktan izleyerek biraz hasret gidermek istedim. Hani aşk adamıyım ya am*na koyayım. <br><br> Orada onu izlerken haz alacağımı düşünürken azap dolu dakikalar başladı. Sevdiğim kız oydu ama o değil gibiydi. Duruşu, görünüşü aynıydı ama bakışları bana baktığı gibi, benim bıraktığım gibi değildi. İzlemeye devam ettiğimde, yanına yaklaşan bir adamın ona temas etmesi ve boynuna sarılmasıyla bende kayış koptu. Uçuruma doğru giden, freni boşalmış bir kamyon gibiydim. Hemen, hızlı adımlarla, aldığım bir buket papatyayı hayal kırıklığımın etkisiyle olay yerinde bırakarak, iz bırakmadan oradan uzaklaştım. Orası artık benim için bir cinayet mahallinden farksızdı. Fakat burada kaçıp giden katil değil, cesedin ta kendisiydi: bendim. <br><br> Taksiyle heyecanla geldiğim mekândan, yürüyerek hızlı adımlarla uzaklaşmaya çalıştım. Okyanusta yönünü yitiren bir balina gibiydim. Her an birilerinin tuzağına düşüp yakalanmaktan korkan bir balık gibiydim. Vücudumdaki hâlsizlik ben adım attıkça artmaya başladı. Gözlerimdeki nemin artışına gökyüzündeki yağmur da eşlik ediyordu. Hiç unutmadım, bir an o kadar âciz olduğumu düşündüm ki sanki bulutlar bile bana eşlik ediyordu. Yorgundum, hâlsizdim. Kendimi önce eve attım. Islanan çamaşırlarımı yenisiyle değiştirirken ondan gelen mesaja cevap vermek yerine telefonumu kaldırıp duvara fırlattım. Bir süre kendime vakit ayırmaya ihtiyacım vardı. Şehrin kalabalığından bunalmışçasına hızlı verdiğim bir karar oldu. Aldığım üç beş eşyayla, herkesin bildiği fakat kimsenin gitmeyi bile aklından geçirmediği bir yere demir attım. Resmen “Titanic” gibiydim. Buz dağına çarptım ve yavaş yavaş su almaya başladım. Su aldıkça da battım. Günlerce yemek yemedim. Herkesle iletişimimi kestim. <br><br> Geceleri balkonda tek başıma otururken, enkaz altından çıkan bir adamın onu hayata bağlanan son umuduyla, tam 40 gün sonra kendime gelmemi söyledim. Artık değişmem lazımdı, acılarımın kırkı çıkmıştı. Artık Realmen - Penia olarak, yeniden toprağa düşen bir tohum, yeşeren bir fidan gibi olmalıydım. Dikenli, can acıtan ama karşı koyulamayan, herkesin istediği türden bir çiçek olmalıydım. Bana ulaşmak isteyenler dikenime katlanmalıydılar. Köklerimi yeniden toprağa saldım. <br><br> Hayal kırıklığıyla geçen bir dönemin ardından, o günden itibaren hep araştırmaya başladım. Kendimi âdeta çok önemli bir sınava hazırlıyormuş gibi hazırlayıp, tecrübeli herkesin sözlerinden birer alıntı yaptım. Kendi kafamda kocaman bir laboratuvar kurdum. İnceleyen bendim, deneylerim ise insanlar… Bakalım sonuç ne çıkacak? En ince ayrıntı bile benim için çok önemliydi. İlk önce kadınları tanımaya yönelik sorularla başladım. Beyaz, çizgisiz dosya kâğıdına mavi pilot kalemle soruları teker teker sıraladım. Gece gündüz demeden, bazen bana eşlik eden sigaramla bazen bağımlısı olduğum madde sayesinde uyumadım, ayakta kaldım. Çabaladım. Hayat boyu mağlubiyeti sindiremeyen bir adamdım. Yine öyle oldu. Önümde bir savaş vardı. Evet, belki yaralıydım fakat mücadele ederek o savaşı kazandım. Yediğim darbeler beni savaş meydanlarının efsane kahramanına dönüştürdü. Hem de farkla! <br><br> Her insanı özelliklede kadını bu laboratuvarda inceledim. Aldıkları nefesten tut, panik anlarında zihinlerinden geçen düşüncelere varana kadar her şeyi öğrendim. Şimdi ise bu laboratuvarı nasıl sıfırdan inşa ettiğimi anlatacağım. Bir günde ya da bir ayda başarılı ve güçlü bir adama dönüşmedim. Elde ettiğim başarının adımlarını sana sunuyorum, bundan sonra her detayı birlikte inceleyeceğiz</p>
+    </section>
+
+    <section class="parallax"></section>
+
+    <section class="glass-section" onclick="toggleSection(event)">
+      <h2>Kaybın ve İntikamın Arasında</h2>
+      <p>Her kayıp bir sırdır; içinde saklı bir ders, gizli bir güç taşır. İnsan, ne kadar yara alırsa o kadar keskinleşir. Kayıp, seni yavaşça soyar; içindeki zayıflıkları açığa çıkarır. Ama işte tam da orada başlar dönüşümün. Her yara, içindeki derinliklerde saklı bir gücü uyandırır. İnsan, kaybettiklerinden doğar, yokluktan var olur.<br><br>İntikam ise bir sanattır. İyi icra edersen, kayıplarını yalnızca telafi etmekle kalmaz, onları en güçlü silahına dönüştürürsün. İntikam, yalnızca bir eylem değil, bir yeniden doğuştur. Yaraların seni eğitirken, intikam seni inşa eder. Kayıplarının ağırlığı altında ezilmek yerine, onları taşımayı öğrenirsin. Ve o yük seni en yükseğe taşır.<br><br>Her adımda düşer, her adımda daha da sert kalkarsın. Zayıflıklarının seni durdurmasına izin vermezsin; çünkü sen artık bir gözlemci değil, bir sarraf olursun. Her insan, bir bilmece gibidir. Onların korkularını, arzularını ve sırlarını çözmek, seni sıradan bir insan olmaktan çıkarır. İşte insan sarrafı böyle bir yolculukta doğar ve zayıflığı tanır, gücü kavrar, insanı en derin arzularında deşifre eder.<br><br>İnsanı anlamak bir beceri değil, bir hükmetme sanatıdır. Kaybetmek seni yoğurur ve anlamak seni yükseltir. İntikam ise bu yükselişin taçlandırılmış hali olur. Ama intikamın sadece bir hırs olmadığını anlarsın. O sadece bir intikam değil, aynı zamanda bir arınma ve geçmişten geleceğe bir köprüdür. Bu köprüyü geçerken kim olduğunla yüzleşir, her kaybın seni nasıl biçimlendirdiğini fark edersin.<br><br>Unutma, insan sarrafı olmak bir yetenek değil Çaylak. İnsanların korkularını çözmek, arzularını şekillendirmek, seni yalnızca güçlü değil, ulaşılmaz yapar. Her kayıp, seni sırlarla dolu bir bilgeye dönüştürür. Sen, kaybettikçe kazananlardan olursun. Çünkü her yara, sadece bir yara değildir.. İçindeki ışığı parlatan bir aynadır. Ve o ışık, seni kimseye benzemeyen bir insana dönüştürür.<br><br>İşte insan sarrafı, kaybettikçe güçlenen, her yarayı intikamıyla iyileştiren ve sonunda insanı insana en iyi anlatan kişidir. Bu yolculukta asla eski sen olmayacaksın. Kaybettiklerinle tanışacak, onlarla savaşacak ve onların seni nasıl yeniden inşa ettiğini göreceksin. Her insan bir sırdır; ama sen artık o sırların ustası adayısın.</p>
+    </section>
+
+    <section class="parallax"></section>
+
+    <section class="glass-section" onclick="toggleSection(event)">
+      <h2>Yeniden Doğuş</h2>
+      <p>Karanlık seni yutmaya çalıştığında, fark edeceksin: Işık hep oradaydı. Her yara, seni yeniden şekillendirir; her kayıp, bir uyanışın kapısını aralar. Dikenler, seni yaralamaz, seni büyütür. Acı, seni yok etmek için değil, seni yeniden yaratmak için gelir.<br><br>Bu sadece bir son değil, bir başlangıç. Asıl hikaye, burada başlıyor. Yeniden Doğuş seni bekliyor. Şimdi, kendi ışığını bulmaya hazır mısın?</p>
+      <p>İnsan Sarraf'ı olmak ve hayatın gerçeklerini idrak etmek isteyenler için asla unutmaması gereken bir hakikati seninle paylaşıyorum:</p>
+      <div class="silver-box">
+        <p>"Lezzetin sona ermesi nasıl elem ise, elemin sona ermesi de lezzettir."</p>
+        </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2024 Bir Sarraf – Yolculuğu</p>
+  </footer>
+  <script>
+  // Scroll Geçiş Animasyonları
+  document.addEventListener("scroll", () => {
+    const sections = document.querySelectorAll(".glass-section");
+    const scrollPosition = window.scrollY + window.innerHeight / 1.5;
+
+    sections.forEach((section) => {
+      if (scrollPosition > section.offsetTop) {
+        section.classList.add("visible");
+      } else {
+        section.classList.remove("visible");
+      }
+    });
+  });
+
+  // CTA Butonuna Tıklayınca Animasyonlu Geçiş
+  const ctaButton = document.querySelector(".cta-button");
+  ctaButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    const targetSection = document.querySelector("#content");
+    targetSection.scrollIntoView({ behavior: "smooth" });
+  });
+
+  // Dinamik Tarih Gösterimi (Footer)
+  const footer = document.querySelector("footer p");
+  const year = new Date().getFullYear();
+  footer.textContent = `© ${year} Bir Sarraf – Yolculuğu`;
+
+  // Parallax Etki
+  document.addEventListener("scroll", () => {
+    const parallax = document.querySelectorAll(".parallax");
+    parallax.forEach((element) => {
+      const offset = window.scrollY * 0.5;
+      element.style.backgroundPositionY = `${offset}px`;
+    });
+  });
+
+  // Gecikmeli Animasyonlar için IntersectionObserver
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("fade-in");
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  const fadeElements = document.querySelectorAll(".glass-section");
+  fadeElements.forEach((el) => observer.observe(el));
+
+  // Tıklama ile Renk Değişimi
+  const glassSections = document.querySelectorAll(".glass-section");
+  
+  // JavaScript
+function toggleSection(element) {
+  // Eğer element 'active' sınıfına sahip değilse, o zaman ekleyip stilini değiştir
+  if (element.classList.contains('active')) {
+    element.classList.remove('active');  // 'active' sınıfını kaldır
+  } else {
+    element.classList.add('active');  // 'active' sınıfını ekle
+  }
+}
+
+  glassSections.forEach((section) => {
+    section.addEventListener("click", () => {
+      // Eğer "active" sınıfı varsa, sıfırla
+      if (section.classList.contains("active")) {
+        section.classList.remove("active");
+        section.style.removeProperty("background"); // Varsayılan arka plan
+        section.style.removeProperty("color"); // Varsayılan metin rengi
+      } else {
+        // Aktif değilse "active" sınıfını ekle ve renkleri değiştir
+        section.classList.add("active");
+        section.style.background = "rgba(255, 255, 255, 1)"; // Beyaz arka plan
+        section.style.color = "black"; // Siyah metin
+      }
+    });
+  });
+</script>
+</body>
+</html>
